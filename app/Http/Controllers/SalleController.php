@@ -128,4 +128,19 @@ class SalleController extends Controller
       function getClassrooms(){
         return Salle::All();
       }
+      function searchData (Request $request)
+
+  {
+    $data=$request->get('data');
+      $data = Salle::select("*")
+              ->where("id","LIKE","%{$data}%")
+              ->orWhere("name","LIKE","%{$data}%")
+              ->orWhere("type","LIKE","%{$data}%")
+              ->orWhere("capcity","LIKE","%{$data}%")
+              ->orWhere("particulier","LIKE","%{$data}%")
+              ->get();
+ 
+      return response()->json($data);
+  
+}
 }

@@ -132,7 +132,12 @@ class ReservationController extends Controller
 
           }
 }
-
+function getParticulars(){
+  return Reservation::where('etat', '=', 'waiting')->get();
+}
+function findAllData(){
+  return Reservation::All();
+}
 }
 // $data = Reservation::where('id_user',$id)->get();
 // return response()->json($data, 200);
